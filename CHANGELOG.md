@@ -9,6 +9,18 @@ session finds out what moved.
 
 ## [Unreleased]
 
+### Added — 2026-11-08
+- `README-KEVYN.md`: a plain-English fork-owner's summary of what the
+  workbench does, which models it downloads (~49 GB full runtime vs ~100 MB
+  harmony-only), and where the runtime root lives.
+
+### Fixed — 2026-11-08
+- `setup_runtime.ps1` detects sm_120+ GPUs (RTX 50-series "Blackwell") via
+  `nvidia-smi` and installs unpinned torch from the cu128 index in the engine
+  venvs — the pinned cu124 builds cap out at sm_90 and fail at inference on
+  those cards. Older GPUs keep the verified cu124 pins. Engine-on-newer-torch
+  is expected to work but unverified; doctor plus one real run is the check.
+
 ### Recovery checkpoint — 2026-09-13
 - Saved the complete Monsters Loose scene roughout state: 31 stills across
   15 scenes, reference-image versions and approvals, timeline notes, timing data,
